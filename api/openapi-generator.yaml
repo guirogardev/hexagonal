@@ -1,0 +1,4 @@
+interfaceOnly: true
+useSpringBoot4: true
+useJakartaEe: true
+openApiNullable: false
