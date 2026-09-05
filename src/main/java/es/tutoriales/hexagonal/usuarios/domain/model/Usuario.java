@@ -1,5 +1,7 @@
 package es.tutoriales.hexagonal.usuarios.domain.model;
 
+import java.util.UUID;
+
 public class Usuario {
 
     private final UsuarioId id;
@@ -27,12 +29,24 @@ public class Usuario {
         );
     }
 
-    public void cambiarEmail(String email) {
-        this.email = new Email(email);
+    public static Usuario reconstituir(
+            UUID id,
+            String nombre,
+            String email) {
+        return new Usuario(new UsuarioId(id), new Nombre(nombre), new Email(email));
     }
 
-    public void cambiarNombre(String nombre) {
-        this.nombre = new Nombre(nombre);
+    public Usuario editar(String nombre, String email) {
+
+        if (nombre != null) {
+            this.nombre = new Nombre(nombre);
+        }
+
+        if (email != null) {
+            this.email = new Email(email);
+        }
+
+        return this;
     }
 
     public UsuarioId id() {

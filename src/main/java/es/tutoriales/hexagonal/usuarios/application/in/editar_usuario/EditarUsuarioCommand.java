@@ -1,4 +1,6 @@
 package es.tutoriales.hexagonal.usuarios.application.in.editar_usuario;
 
-public record EditarUsuarioCommand(String nombre, String email) {
+import java.util.UUID;
+
+public record EditarUsuarioCommand(UUID id, String nombre, String email) {
 }

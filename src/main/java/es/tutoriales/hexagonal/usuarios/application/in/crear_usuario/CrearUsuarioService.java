@@ -15,6 +15,15 @@ public class CrearUsuarioService implements CrearUsuarioUseCase {
     @Override
     public void ejecutar(CrearUsuarioCommand command) {
 
+        final boolean existeNombre = usuarioRepository.existsByNombre(command.nombre());
+        final boolean existeEmail = usuarioRepository.existsByEmail(command.email());
+
+        if (existeNombre || existeEmail) {
+            throw new IllegalArgumentException(
+                    "Ya existe un usuario con el nombre y/o el email proporcionados"
+            );
+        }
+
         final Usuario usuario = Usuario.crear(
                 new Nombre(command.nombre()),
                 new Email(command.email())
@@ -22,4 +31,5 @@ public class CrearUsuarioService implements CrearUsuarioUseCase {
 
         this.usuarioRepository.guardar(usuario);
     }
+
 }
