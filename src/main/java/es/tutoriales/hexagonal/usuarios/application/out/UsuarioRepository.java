@@ -6,9 +6,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UsuarioRepository {
+
     void guardar(Usuario usuario);
 
     Optional<Usuario> getById(UUID id);
+
+    void deleteById(UUID id);
 
     boolean existsByNombreAndEmailAndNoId(UUID id, String nombre, String email);
 

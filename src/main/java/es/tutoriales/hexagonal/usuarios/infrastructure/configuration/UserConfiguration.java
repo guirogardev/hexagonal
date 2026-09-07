@@ -4,6 +4,8 @@ import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuari
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioService;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioUseCase;
+import es.tutoriales.hexagonal.usuarios.application.in.eliminar_usuario.EliminarUsuarioService;
+import es.tutoriales.hexagonal.usuarios.application.in.eliminar_usuario.EliminarUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioService;
 import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.out.UsuarioRepository;
@@ -43,5 +45,12 @@ public class UserConfiguration {
             UsuarioRepository usuarioRepository
     ) {
         return new ObtenerUsuarioService(usuarioRepository);
+    }
+
+    @Bean
+    public EliminarUsuarioUseCase eliminarUsuarioUseCase(
+            UsuarioRepository usuarioRepository
+    ) {
+        return new EliminarUsuarioService(usuarioRepository);
     }
 }

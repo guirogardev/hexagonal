@@ -4,6 +4,7 @@ import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuari
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioCommand;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioUseCase;
+import es.tutoriales.hexagonal.usuarios.application.in.eliminar_usuario.EliminarUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.domain.model.Usuario;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class UsuarioController implements UsuariosApi {
     private final CrearUsuarioUseCase crearUsuarioUseCase;
     private final EditarUsuarioUseCase editarUsuarioUseCase;
     private final ObtenerUsuarioUseCase obtenerUsuarioUseCase;
+    private final EliminarUsuarioUseCase eliminarUsuarioUseCase;
 
     @Override
     public ResponseEntity<UsuarioResponse> obtenerUsuario(UUID id) {
@@ -68,5 +70,11 @@ public class UsuarioController implements UsuariosApi {
                         .nombre(usuario.nombre().nombre())
                         .email(usuario.email().email())
         );
+    }
+
+    @Override
+    public ResponseEntity<Void> eliminarUsuario(UUID id) {
+        this.eliminarUsuarioUseCase.ejecutar(id);
+        return ResponseEntity.noContent().build();
     }
 }

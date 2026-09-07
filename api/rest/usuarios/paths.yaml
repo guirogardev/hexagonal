@@ -76,3 +76,22 @@ usuarioPorId:
 
       '404':
         description: Usuario no encontrado
+
+  delete:
+    tags:
+      - Usuarios
+    summary: Elimina un usuario dado su identificador.
+    operationId: eliminarUsuario
+
+    parameters:
+      - $ref: '../hexagonal.yaml#/components/parameters/UsuarioId'
+
+    responses:
+      '204':
+        description: Usuario eliminado correctamente
+
+      '400':
+        description: Identificador inválido
+
+      '404':
+        description: Usuario no encontrado
