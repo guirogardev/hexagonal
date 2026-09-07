@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-public class UsuarioController implements UsuariosApi {
+public class UsuarioRESTController implements UsuariosApi {
 
     private final CrearUsuarioUseCase crearUsuarioUseCase;
     private final EditarUsuarioUseCase editarUsuarioUseCase;
