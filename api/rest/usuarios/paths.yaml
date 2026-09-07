@@ -53,3 +53,26 @@ usuarioPorId:
 
       '404':
         description: Usuario no encontrado
+
+  get:
+    tags:
+      - Usuarios
+    summary: Obtiene un usuario dado su identificador.
+    operationId: obtenerUsuario
+
+    parameters:
+      - $ref: '../hexagonal.yaml#/components/parameters/UsuarioId'
+
+    responses:
+      '200':
+        description: Usuario recuperado correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '../hexagonal.yaml#/components/schemas/UsuarioResponse'
+
+      '400':
+        description: Identificador inválido
+
+      '404':
+        description: Usuario no encontrado

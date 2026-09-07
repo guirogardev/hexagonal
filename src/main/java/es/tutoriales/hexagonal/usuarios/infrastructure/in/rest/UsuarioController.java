@@ -4,6 +4,7 @@ import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuari
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioCommand;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioUseCase;
+import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.domain.model.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.api.UsuariosApi;
@@ -21,6 +22,19 @@ public class UsuarioController implements UsuariosApi {
 
     private final CrearUsuarioUseCase crearUsuarioUseCase;
     private final EditarUsuarioUseCase editarUsuarioUseCase;
+    private final ObtenerUsuarioUseCase obtenerUsuarioUseCase;
+
+    @Override
+    public ResponseEntity<UsuarioResponse> obtenerUsuario(UUID id) {
+        final Usuario usuario = this.obtenerUsuarioUseCase.ejecutar(id);
+
+        return ResponseEntity.ok(
+                new UsuarioResponse()
+                        .id(usuario.id().id())
+                        .nombre(usuario.nombre().nombre())
+                        .email(usuario.email().email())
+        );
+    }
 
     @Override
     public ResponseEntity<UsuarioResponse> crearUsuario(CrearUsuarioRequest request) {

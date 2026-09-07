@@ -4,6 +4,8 @@ import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuari
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioService;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioUseCase;
+import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioService;
+import es.tutoriales.hexagonal.usuarios.application.in.obtener_usuario.ObtenerUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.out.UsuarioRepository;
 import es.tutoriales.hexagonal.usuarios.infrastructure.out.persistence.jpa.UsuarioJpaRepository;
 import es.tutoriales.hexagonal.usuarios.infrastructure.out.persistence.jpa.UsuarioPersistenceMapper;
@@ -34,5 +36,12 @@ public class UserConfiguration {
             UsuarioRepository usuarioRepository
     ) {
         return new EditarUsuarioService(usuarioRepository);
+    }
+
+    @Bean
+    public ObtenerUsuarioUseCase obtenerUsuarioUseCase(
+            UsuarioRepository usuarioRepository
+    ) {
+        return new ObtenerUsuarioService(usuarioRepository);
     }
 }
