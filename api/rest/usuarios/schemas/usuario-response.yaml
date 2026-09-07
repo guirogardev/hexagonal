@@ -1,0 +1,18 @@
+type: object
+title: UsuarioResponse
+required:
+  - id
+  - nombre
+  - email
+properties:
+  id:
+    type: string
+    format: uuid
+    example: 550e8400-e29b-41d4-a716-446655440000
+  nombre:
+    type: string
+    example: Juan Pérez
+  email:
+    type: string
+    format: email
+    example: juan.perez@gmail.com

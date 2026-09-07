@@ -1,0 +1,35 @@
+openapi: 3.1.0
+
+info:
+  title: Hexagonal API
+  description: API para la gestión de usuarios y cuentas bancarias
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+  - name: Usuarios
+    description: Operaciones relacionadas con usuarios
+
+paths:
+  /usuarios:
+    $ref: './usuarios/paths.yaml#/usuarios'
+
+  /usuarios/{id}:
+    $ref: './usuarios/paths.yaml#/usuarioPorId'
+
+components:
+  schemas:
+    CrearUsuarioRequest:
+      $ref: './usuarios/schemas/crear-usuario-request.yaml'
+
+    EditarUsuarioRequest:
+      $ref: './usuarios/schemas/editar-usuario-request.yaml'
+    UsuarioResponse:
+      $ref: './usuarios/schemas/usuario-response.yaml'
+  parameters:
+    UsuarioId:
+      $ref: './usuarios/parameters/usuario-id.yaml'
+
+

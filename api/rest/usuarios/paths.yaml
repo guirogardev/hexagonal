@@ -1,0 +1,55 @@
+usuarios:
+  post:
+    tags:
+      - Usuarios
+    summary: Crear un usuario
+    operationId: crearUsuario
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../hexagonal.yaml#/components/schemas/CrearUsuarioRequest'
+
+    responses:
+      '201':
+        description: Usuario creado correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '../hexagonal.yaml#/components/schemas/UsuarioResponse'
+
+      '400':
+        description: Datos de usuario inválidos
+
+usuarioPorId:
+  patch:
+    tags:
+      - Usuarios
+    summary: Editar parcialmente un usuario
+    operationId: editarUsuario
+
+    parameters:
+      - $ref: '../hexagonal.yaml#/components/parameters/UsuarioId'
+
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../hexagonal.yaml#/components/schemas/EditarUsuarioRequest'
+
+    responses:
+      '200':
+        description: Usuario actualizado correctamente
+        content:
+          application/json:
+            schema:
+              $ref: '../hexagonal.yaml#/components/schemas/UsuarioResponse'
+
+      '400':
+        description: Datos de usuario inválidos
+
+      '404':
+        description: Usuario no encontrado

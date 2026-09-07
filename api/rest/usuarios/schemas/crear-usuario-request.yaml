@@ -1,0 +1,15 @@
+type: object
+
+required:
+  - nombre
+  - email
+
+properties:
+  nombre:
+    type: string
+    example: Juan Pérez
+
+  email:
+    type: string
+    format: email
+    example: juan.perez@gmail.com

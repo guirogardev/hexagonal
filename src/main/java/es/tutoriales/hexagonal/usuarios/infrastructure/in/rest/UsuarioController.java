@@ -1,6 +1,5 @@
 package es.tutoriales.hexagonal.usuarios.infrastructure.in.rest;
 
-
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioCommand;
 import es.tutoriales.hexagonal.usuarios.application.in.crear_usuario.CrearUsuarioUseCase;
 import es.tutoriales.hexagonal.usuarios.application.in.editar_usuario.EditarUsuarioCommand;
@@ -40,7 +39,6 @@ public class UsuarioController implements UsuariosApi {
     public ResponseEntity<UsuarioResponse> editarUsuario(
             UUID id,
             EditarUsuarioRequest request) {
-
         final EditarUsuarioCommand command =
                 new EditarUsuarioCommand(
                         id,
