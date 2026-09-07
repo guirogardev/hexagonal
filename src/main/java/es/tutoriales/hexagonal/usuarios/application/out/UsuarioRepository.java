@@ -10,6 +10,8 @@ public interface UsuarioRepository {
 
     Optional<Usuario> getById(UUID id);
 
+    boolean existsByNombreAndEmailAndNoId(UUID id, String nombre, String email);
+
     boolean existsByNombre(String nombre);
 
     boolean existsByEmail(String email);

@@ -39,6 +39,11 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
     }
 
     @Override
+    public boolean existsByNombreAndEmailAndNoId(UUID id, String nombre, String email) {
+        return this.repository.existsByEmailAndIdNot(email, id) || this.repository.existsByNombreAndIdNot(nombre, id);
+    }
+
+    @Override
     public boolean existsByNombre(String nombre) {
         return this.repository.existsByNombre(nombre);
     }

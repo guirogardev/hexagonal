@@ -15,12 +15,9 @@ public class EditarUsuarioService implements EditarUsuarioUseCase {
                 .getById(command.id())
                 .orElseThrow();
 
-        final boolean existeNombre = usuarioRepository.existsByNombre(command.nombre());
-        final boolean existeEmail = usuarioRepository.existsByEmail(command.email());
+        final boolean existeNombreEmail = this.usuarioRepository.existsByNombreAndEmailAndNoId(command.id(), command.nombre(), command.email());
 
-        // TODO: Aquí habría que meter una validación más específica para que no tomara los valores del propio usuario como repetidos.
-
-        if (existeNombre || existeEmail) {
+        if (existeNombreEmail) {
             throw new IllegalArgumentException(
                     "Ya existe un usuario con el nombre y/o el email proporcionados"
             );
