@@ -27,3 +27,7 @@ spring:
       path: /graphiql
     schema:
       locations: file:./api/graphql/
+
+  grpc:
+    server:
+      port: 9090

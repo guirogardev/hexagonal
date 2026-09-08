@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package users.v1;
+
+option java_package = "es.tutoriales.hexagonal.usuarios.infrastructure.in.grpc";
+option java_multiple_files = true;
+
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message GetUsersRequest {
+}
+
+message GetUsersResponse {
+  repeated User users = 1;
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
