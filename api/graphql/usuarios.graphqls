@@ -9,7 +9,7 @@ type Query {
 }
 
 type Mutation {
-    crearUsuario(input: CrearUsuarioInput!): Usuario!
+    crearUsuario(input: CrearUsuarioInput!): Boolean!
     editarUsuario(id: ID!, input: EditarUsuarioInput!): Usuario!
     eliminarUsuario(id: ID!): Boolean!
 }
